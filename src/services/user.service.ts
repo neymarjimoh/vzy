@@ -62,6 +62,36 @@ class UserService extends BaseService {
   ) {
     return await User.updateOne(query, update, { new: true });
   }
+
+  public async updateProfile(authUser, userDTO) {
+    const { _id: user_id } = authUser;
+
+    const { last_name, first_name } = userDTO;
+
+    if (Object.keys(userDTO).length <= 0) {
+      return this.internalResponse(false, {}, 400, "No data to update");
+    }
+    let updated_user: IUser;
+    updated_user = await User.findByIdAndUpdate(
+      user_id,
+      {
+        $set: {
+          last_name,
+          first_name,
+        },
+      },
+      { new: true }
+    );
+    if (!updated_user)
+      return this.internalResponse(
+        false,
+        {},
+        400,
+        "Unable to update profile. Try again"
+      );
+
+    return this.internalResponse(true, updated_user, 200, "Profile updated");
+  }
 }
 
 export const userService = new UserService();

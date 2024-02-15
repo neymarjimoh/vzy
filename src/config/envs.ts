@@ -10,5 +10,6 @@ export default {
   host: process.env.HOST,
   secrets: {
     jwt: process.env.JWT_SECRET,
+    stripe: process.env.STRIPE_SECRET_KEY,
   },
 };

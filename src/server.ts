@@ -14,7 +14,7 @@ const startServer = (): void => {
   app.set("port", port);
   server.on("error", errorHandler);
   server.listen(port, () => {
-    console.log("Techinnover prompt-1 server listening on port", port);
+    console.log("Vzy server listening on port", port);
   });
   // If the Node process ends, handle graceful shutdown
   const sigs = ["SIGINT", "SIGTERM", "SIGQUIT"];
