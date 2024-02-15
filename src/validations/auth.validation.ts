@@ -5,9 +5,9 @@ class AuthValidation {
   public signUpValidation() {
     return celebrate({
       body: Joi.object({
+        email: Joi.string().email().required().trim(true),
         first_name: Joi.string().required().trim(true),
         last_name: Joi.string().required().trim(true),
-        email: Joi.string().email().required().trim(true),
         password: Joi.string().min(8).required(),
       }),
     });

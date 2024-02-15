@@ -17,7 +17,7 @@ authRouter.post(
         return errorResponse(res, response.message, response.data, 400);
       }
 
-      return successRes(res, response.data);
+      return successRes(res, response.data, response.message);
     } catch (error: any) {
       console.log(error);
       return errorResponse(
@@ -41,7 +41,7 @@ authRouter.post(
         return errorResponse(res, response.message, response.data, 400);
       }
 
-      return successRes(res, response.data);
+      return successRes(res, response.data, response.message);
     } catch (error: any) {
       console.log(error);
       return errorResponse(
